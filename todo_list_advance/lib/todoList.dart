@@ -224,7 +224,8 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                 ),
                               ),
                             ]),
-                        //card start
+///////////////////////////
+                        ///  //card start
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
@@ -257,6 +258,7 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
+                                  ///titile
                                   Text(
                                     userList[index].title,
                                     style: const TextStyle(
@@ -266,6 +268,7 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                   const SizedBox(
                                     height: 10,
                                   ),
+//disceiption
                                   Text(
                                     userList[index].discription,
                                     style: const TextStyle(
@@ -286,22 +289,23 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                 ],
                               ),
                             ),
-                            // IconButton(
-                            //   onPressed: () {
-                            //     setState(() {
-                            //       userList[index].complete =
-                            //           !userList[index].complete;
-                            //     });
-                            //   },
-                            //   icon: (userList[index].complete == true)
-                            //       ? const Icon(
-                            //           Icons.check_circle_outline,
-                            //           color: Color.fromRGBO(4, 189, 0, 1),
-                            //         )
-                            //       : const Icon(
-                            //           Icons.circle_outlined,
-                            //         ),
-                            // ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  userList[index].complete =
+                                      !userList[index].complete;
+                                });
+                                callAllFun();
+                              },
+                              icon: (userList[index].complete == true)
+                                  ? const Icon(
+                                      Icons.check_circle_outline,
+                                      color: Color.fromRGBO(4, 189, 0, 1),
+                                    )
+                                  : const Icon(
+                                      Icons.circle_outlined,
+                                    ),
+                            ),
                           ]),
                         ),
                       ),
@@ -404,7 +408,8 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                     color: Color.fromRGBO(89, 57, 241, 1)),
                               ),
                             ),
-                            //Title text fild
+///////////////////////////////////
+/////Title text fild
                             TextFormField(
                               autofocus: true,
                               controller: title,
@@ -415,7 +420,6 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                 return null;
                               },
                               decoration: InputDecoration(
-                                // label: const Text("Title"),
                                 focusedBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color.fromRGBO(89, 57, 241, 1),
@@ -445,6 +449,7 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                 color: Color.fromRGBO(89, 57, 241, 1),
                               ),
                             ),
+////////////////////discriptin textformfild
                             TextFormField(
                               controller: discription,
                               maxLines: 3,
@@ -483,7 +488,7 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                 color: Color.fromRGBO(89, 57, 241, 1),
                               ),
                             ),
-                            // date
+////////////////////// // date
                             TextFormField(
                               validator: (value) {
                                 if (value == "" || value!.trim().isEmpty) {
@@ -525,7 +530,8 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                               ),
                             ),
 
-                            /// submit button
+                            //////////////
+                            /// ////////////// /// submit button
                             Padding(
                               padding: const EdgeInsets.only(left: 30, top: 20),
                               child: ElevatedButton(
@@ -579,17 +585,21 @@ class _Todo_list_homeState extends State<Todo_list_home> {
         // modelobj.discription = discription.text.trim();
         updateToDo(UserData(
             id: modelobj!.id,
-            title: date.text.trim(),
+            title: title.text.trim(),
             discription: discription.text.trim(),
-            date: date.text.trim()));
+            date: date.text.trim(),
+            complete: modelobj.complete));
         callAllFun();
 
         Navigator.pop(context);
       } else {
 //New data Add kela tr
-        
+
         insertData(UserData(
-            title: title.text, discription: discription.text, date: date.text));
+            title: title.text,
+            discription: discription.text,
+            date: date.text,
+            complete: 0));
         callAllFun();
         Navigator.pop(context);
       }

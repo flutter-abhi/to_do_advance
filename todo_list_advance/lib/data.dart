@@ -6,7 +6,6 @@ List userList = [];
 void callAllFun() async {
   await createDataBase();
   userList = await getToDoData();
-  
 }
 
 class UserData {
@@ -40,12 +39,10 @@ class UserData {
 
 dynamic database;
 Future<void> createDataBase() async {
-  print("in create fuction");
   database = openDatabase(
     join(await getDatabasesPath(), "Todolist6DB.db"),
     version: 1,
     onCreate: (db, version) async {
-      print("in onCreate parameter");
       await db.execute('''CREATE TABLE todolistable(
           id INTEGER PRIMARY KEY,
           title TEXT,
@@ -58,7 +55,6 @@ Future<void> createDataBase() async {
 }
 
 Future<void> updateToDo(UserData obj) async {
-  print("**************in update function");
   dynamic localDb = await database;
   await localDb.update('todolistable', obj.userDataMap(),
       where: "id=?", whereArgs: [obj.id]);
@@ -66,10 +62,9 @@ Future<void> updateToDo(UserData obj) async {
 
 Future<void> insertData(UserData obj) async {
   dynamic localDB = await database;
-  print("in insert fun");
+
   await localDB.insert("todolistable", obj.userDataMap(),
       conflictAlgorithm: ConflictAlgorithm.replace);
-  print("end insert fun");
 }
 
 Future<void> deleteData(UserData obj) async {
