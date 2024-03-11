@@ -12,9 +12,9 @@ class UserModelClass {
 }
 
 List userDataList = [
-  UserModelClass(userName: "abhishek", password: "Admin"),
+  UserModelClass(userName: "Lalit", password: "Admin"),
   UserModelClass(userName: "prajwal", password: "Admin"),
-  UserModelClass(userName: "lalits", password: "Admin"),
+  UserModelClass(userName: "abhishek", password: "Admin"),
 ];
 
 class Login extends StatefulWidget {
@@ -27,7 +27,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   //finding user in list if find return true
   bool findUser(value) {
-    _userIndex = userDataList.indexWhere((element) => element.userName == value);
+    _userIndex =
+        userDataList.indexWhere((element) => element.userName == value);
     if (_userIndex != -1) {
       return true;
     }
