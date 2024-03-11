@@ -289,15 +289,32 @@ class _Todo_list_homeState extends State<Todo_list_home> {
                                 ],
                               ),
                             ),
+//complete Button ////////////////////////////////////////////////////////////////////////////////
                             IconButton(
                               onPressed: () {
                                 setState(() {
-                                  userList[index].complete =
-                                      !userList[index].complete;
+                                  if (userList[index].complete == 0) {
+                                    // userList[index].complete = 1;
+                                    updateToDo(UserData(
+                                        id: userList[index].id,
+                                        title: userList[index].title,
+                                        discription:
+                                            userList[index].discription,
+                                        date: userList[index].date,
+                                        complete: 1));
+                                  } else {
+                                    updateToDo(UserData(
+                                        id: userList[index].id,
+                                        title: userList[index].title,
+                                        discription:
+                                            userList[index].discription,
+                                        date: userList[index].date,
+                                        complete: 0));
+                                  }
                                 });
                                 callAllFun();
                               },
-                              icon: (userList[index].complete == true)
+                              icon: (userList[index].complete == 1)
                                   ? const Icon(
                                       Icons.check_circle_outline,
                                       color: Color.fromRGBO(4, 189, 0, 1),
