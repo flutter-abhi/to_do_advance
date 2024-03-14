@@ -26,7 +26,6 @@ class _Todo_list_homeState extends State<Todo_list_home> {
   void initState() {
     super.initState();
     callAllFun();
-
     setState(() {});
   }
 
